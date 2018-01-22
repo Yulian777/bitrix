@@ -1,5 +1,6 @@
 <?php
-return array (
+
+return array (
   'utf_mode' => 
   array (
     'value' => true,
@@ -27,7 +28,7 @@
   array (
     'value' => 
     array (
-      'debug' => false,
+      'debug' => true,
       'handled_errors_types' => 4437,
       'exception_errors_types' => 4437,
       'ignore_silence' => false,
@@ -46,8 +47,8 @@
         'className' => '\\Bitrix\\Main\\DB\\MysqliConnection',
         'host' => 'localhost',
         'database' => 'php1',
-        'login' => 'php1',
-        'password' => 'devdev',
+        'login' => 'root',
+        'password' => 'root',
         'options' => 2.0,
       ),
     ),
