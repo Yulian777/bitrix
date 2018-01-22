@@ -3,124 +3,70 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Демонстрационная версия продукта «1С-Битрикс: Управление сайтом»");
 $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
 $APPLICATION->SetTitle("Каталог книг");
-?> <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list",
-	"",
-	Array(
-		"IBLOCK_TYPE" => "books",
-		"IBLOCK_ID" => "6",
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
-		"SECTION_URL" => "/e-store/books/#SECTION_ID#/",
-		"COUNT_ELEMENTS" => "Y",
-		"DISPLAY_PANEL" => "N",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600"
-	)
-);?>
-<hr />
+?>
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.top",
-	"",
-	Array(
-		"IBLOCK_TYPE" => "books",
-		"IBLOCK_ID" => "6",
-		"ELEMENT_SORT_FIELD" => "sort",
-		"ELEMENT_SORT_ORDER" => "asc",
-		"SECTION_URL" => "/e-store/books/#SECTION_ID#/",
-		"DETAIL_URL" => "/e-store/books/#SECTION_ID#/#ELEMENT_ID#/",
-		"BASKET_URL" => "/personal/cart/",
-		"ACTION_VARIABLE" => "action",
-		"PRODUCT_ID_VARIABLE" => "id",
-		"SECTION_ID_VARIABLE" => "SECTION_ID",
-		"DISPLAY_COMPARE" => "N",
-		"ELEMENT_COUNT" => "3",
-		"LINE_ELEMENT_COUNT" => "1",
-		"PROPERTY_CODE" => Array(),
-		"PRICE_CODE" => Array("RETAIL"),
-		"USE_PRICE_COUNT" => "N",
-		"SHOW_PRICE_COUNT" => "1",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600"
-	)
+    "bitrix:news.list",
+    "posts",
+    Array(
+        "DISPLAY_DATE" => "Y",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "Y",
+        "DISPLAY_PREVIEW_TEXT" => "Y",
+        "AJAX_MODE" => "Y",
+        "IBLOCK_TYPE" => "skillogram",
+        "IBLOCK_ID" => "16",
+        "NEWS_COUNT" => "5",
+        "SORT_BY1" => "ID",
+        "SORT_ORDER1" => "ASC",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER2" => "ASC",
+        "FILTER_NAME" => "",
+        "FIELD_CODE" => [
+            'ID',
+            'DETAIL_PICTURE',
+        ],
+        "PROPERTY_CODE" => [
+            'AVATAR',
+        ],
+        "CHECK_DATES" => "Y",
+        "DETAIL_URL" => "",
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "SET_TITLE" => "Y",
+        "SET_BROWSER_TITLE" => "Y",
+        "SET_META_KEYWORDS" => "Y",
+        "SET_META_DESCRIPTION" => "Y",
+        "SET_LAST_MODIFIED" => "Y",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+        "ADD_SECTIONS_CHAIN" => "Y",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+        "PARENT_SECTION" => "",
+        "PARENT_SECTION_CODE" => "",
+        "INCLUDE_SUBSECTIONS" => "Y",
+        "CACHE_TYPE" => "N",
+        "CACHE_TIME" => "3600",
+        "CACHE_FILTER" => "Y",
+        "CACHE_GROUPS" => "Y",
+        "DISPLAY_TOP_PAGER" => "Y",
+        "DISPLAY_BOTTOM_PAGER" => "Y",
+        "PAGER_TITLE" => "Новости",
+        "PAGER_SHOW_ALWAYS" => "Y",
+        "PAGER_TEMPLATE" => "",
+        "PAGER_DESC_NUMBERING" => "Y",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "Y",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "SET_STATUS_404" => "Y",
+        "SHOW_404" => "Y",
+        "MESSAGE_404" => "",
+        "PAGER_BASE_LINK" => "",
+        "PAGER_PARAMS_NAME" => "arrPager",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_ADDITIONAL" => ""
+    )
 );?>
-
-<h2>Видео-новости</h2>
-
-<?$APPLICATION->IncludeComponent(
-	"bitrix:player",
-	"",
-	Array(
-		"PLAYER_TYPE" => "auto",
-		"USE_PLAYLIST" => "N",
-		"PATH" => "/upload/intro.flv",
-		"WIDTH" => "400",
-		"HEIGHT" => "324",
-		"FULLSCREEN" => "Y",
-		"SKIN_PATH" => "/bitrix/components/bitrix/player/mediaplayer/skins",
-		"SKIN" => "bitrix.swf",
-		"CONTROLBAR" => "bottom",
-		"WMODE" => "transparent",
-		"HIDE_MENU" => "N",
-		"SHOW_CONTROLS" => "Y",
-		"SHOW_STOP" => "N",
-		"SHOW_DIGITS" => "Y",
-		"CONTROLS_BGCOLOR" => "FFFFFF",
-		"CONTROLS_COLOR" => "000000",
-		"CONTROLS_OVER_COLOR" => "000000",
-		"SCREEN_COLOR" => "000000",
-		"WMODE_WMV" => "window",
-		"AUTOSTART" => "N",
-		"REPEAT" => "N",
-		"VOLUME" => "90",
-		"DISPLAY_CLICK" => "play",
-		"MUTE" => "N",
-		"HIGH_QUALITY" => "Y",
-		"ADVANCED_MODE_SETTINGS" => "N",
-		"BUFFER_LENGTH" => "10",
-		"DOWNLOAD_LINK_TARGET" => "_self"
-	),
-false
-);?>
-
-<!-- --><h2>Новые фотографии</h2>
-<?$APPLICATION->IncludeComponent(
-	"bitrix:photogallery.detail.list",
-	".default",
-	Array(
-		"IBLOCK_TYPE" => "photos",
-		"IBLOCK_ID" => "10",
-		"BEHAVIOUR" => "USER",
-		"USER_ALIAS" => $_REQUEST["USER_ALIAS"],
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
-		"ELEMENT_LAST_TYPE" => "none",
-		"USE_DESC_PAGE" => "N",
-		"ELEMENT_SORT_FIELD" => "sort",
-		"ELEMENT_SORT_ORDER" => "asc",
-		"PAGE_ELEMENTS" => "6",
-		"DETAIL_URL" => "/content/gallery/#USER_ALIAS#/#SECTION_ID#/#ELEMENT_ID#/",
-		"DETAIL_SLIDE_SHOW_URL" => "/content/gallery/#USER_ALIAS#/#SECTION_ID#/#ELEMENT_ID#/slide_show/",
-		"SEARCH_URL" => "/content/gallery/search/",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600",
-		"PAGE_NAVIGATION_TEMPLATE" => "",
-		"USE_PERMISSIONS" => "N",
-		"GROUP_PERMISSIONS" => array(0=>"1",1=>"",),
-		"COMMENTS_TYPE" => "none",
-		"SET_TITLE" => "N",
-		"DATE_TIME_FORMAT" => "d.m.Y",
-		"ADDITIONAL_SIGHTS" => array(),
-		"PICTURES_SIGHT" => "",
-		"THUMBNAIL_SIZE" => "90",
-		"SHOW_PAGE_NAVIGATION" => "none",
-		"SHOW_CONTROLS" => "N",
-		"SHOW_RATING" => "N",
-		"SHOW_SHOWS" => "N",
-		"SHOW_COMMENTS" => "N",
-		"SHOW_TAGS" => "N",
-		"MAX_VOTE" => "5",
-		"VOTE_NAMES" => array(0=>"1",1=>"2",2=>"3",3=>"4",4=>"5",5=>"",)
-	)
-);?><!-- -->
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
